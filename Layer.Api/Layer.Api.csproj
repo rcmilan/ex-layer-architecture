@@ -18,4 +18,8 @@
 		<MakeDir Directories="db" />
 	</Target>
 
+	<ItemGroup>
+		<InternalsVisibleTo Include="Layer.Test" />
+	</ItemGroup>
+
 </Project>

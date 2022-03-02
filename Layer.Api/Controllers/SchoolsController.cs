@@ -16,7 +16,7 @@ namespace Layer.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var school = await _service.Get(id);
 
@@ -24,7 +24,7 @@ namespace Layer.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(School school)
+        public async Task<IActionResult> Post(School school)
         {
             await _service.Add(school);
 

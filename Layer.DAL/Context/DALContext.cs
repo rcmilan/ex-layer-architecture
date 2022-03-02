@@ -11,5 +11,15 @@ namespace Layer.DAL.Context
         }
 
         public DbSet<School> Schools { get;}
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<School>(builder => {
+                builder.HasKey(s => s.Id);
+                builder.Property(s => s.Name);
+            });
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
