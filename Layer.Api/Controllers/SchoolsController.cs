@@ -1,4 +1,5 @@
 ﻿using Layer.BLL.Services;
+using Layer.DAL.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Layer.Api.Controllers
@@ -7,12 +8,25 @@ namespace Layer.Api.Controllers
     [ApiController]
     public class SchoolsController : ControllerBase
     {
+        private readonly SchoolService _service;
+
+        public SchoolsController(SchoolService service)
+        {
+            this._service = service;
+        }
+
         [HttpGet]
         public async Task<IActionResult> Index(int id)
         {
-            var service = new SchoolService();
+            var school = await _service.Get(id);
 
-            var school = await service.Get(id);
+            return Ok(school);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(School school)
+        {
+            await _service.Add(school);
 
             return Ok(school);
         }
