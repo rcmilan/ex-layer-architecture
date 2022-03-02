@@ -6,8 +6,7 @@ namespace Layer.Test.Integration
 {
     internal class SchoolTests
     {
-        private const string BASE_PATH = "/api/schools";
-
+        private const string BASE_PATH = "/api/Schools";
 
         [Test]
         public async Task Should_Create_Schools()

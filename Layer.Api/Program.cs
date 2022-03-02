@@ -3,8 +3,13 @@ using Layer.DAL;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+var folder = Environment.SpecialFolder.LocalApplicationData;
+var path = Environment.GetFolderPath(folder);
+var DbPath = System.IO.Path.Join(path, "db\\schools.sqlite3");
+
 // Add services to the container.
-builder.Services.AddDALModule();
+builder.Services.AddDALModule(DbPath);
 
 builder.Services.AddScoped<SchoolService>();
 
