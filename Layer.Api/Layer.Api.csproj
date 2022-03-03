@@ -14,10 +14,6 @@
 		<ProjectReference Include="..\Layer.BLL\Layer.BLL.csproj" />
 	</ItemGroup>
 
-	<Target Name="MakeMyDir" AfterTargets="Build">
-		<MakeDir Directories="db" />
-	</Target>
-
 	<ItemGroup>
 		<InternalsVisibleTo Include="Layer.Test" />
 	</ItemGroup>
