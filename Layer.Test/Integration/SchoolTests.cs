@@ -15,15 +15,19 @@ namespace Layer.Test.Integration
             await using var application = new WebAppFactory("Development");
             var client = application.CreateClient();
 
-            var school1 = new School("school1");
-            var school2 = new School("school2");
-            var school3 = new School("school3");
+            var schoolRequest = new School("school1");
 
             // act
-            var response = await client.PostAsync(BASE_PATH, school1.BuildByteContent());
+            var post = await client.PostAsync(BASE_PATH, schoolRequest.BuildByteContent());
+
+            var postResponse = await post.DeserializeContentAsync<School>();
+
+            var get = await client.GetAsync(BASE_PATH + "/" + postResponse.Id);
+
+            var getResponse = await get.DeserializeContentAsync<School>();
 
             // Assert
-            Assert.IsNotNull(response);
+            Assert.AreEqual(postResponse.Id, getResponse.Id);
         }
     }
 }
