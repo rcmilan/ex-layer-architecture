@@ -6,7 +6,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 var folder = Environment.SpecialFolder.LocalApplicationData;
 var path = Environment.GetFolderPath(folder);
-var DbPath = System.IO.Path.Join(path, "db\\schools.sqlite3");
+/**
+ * Atenção!
+ * O banco será criado em C:\Users\<usuário>\AppData\Local\schools.sqlite3
+ * */
+var DbPath = System.IO.Path.Join(path, "schools.sqlite3");
 
 // Add services to the container.
 builder.Services.AddDALModule(DbPath);
